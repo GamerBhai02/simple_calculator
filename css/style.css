@@ -1,0 +1,113 @@
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9ecef; /* Light grey background for better contrast */
+}
+
+/* Calculator container */
+div {
+    max-width: 320px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background for the calculator */
+    border: 2px solid #0066cc; /* Blue border */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
+}
+
+/* Calculator header */
+h2 {
+    color: #0066cc;
+    margin-top: 0;
+    display: inline-block;
+}
+
+/* Calculator buttons */
+input[type="button"] {
+    width: 50px;
+    height: 35px;
+    margin: 5px;
+    background-color: #f0f0f0; /* Light grey buttons */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    outline: none; /* Remove outline for buttons */
+}
+
+input[type="button"]:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+}
+
+input[type="button"]:hover {
+    background-color: #d1e7fd; /* Light blue on hover */
+}
+
+/* Clear and Backspace buttons - double width of normal buttons */
+#clear, #backspace {
+    width: calc(100% - 10px); /* Full width with margin */
+    height: 50px; /* Slightly larger height for emphasis */
+    background-color: #ff9900; /* Orange color */
+    color: #fff;
+    margin-bottom: 5px; /* Adds space below */
+    border: none; /* No border */
+    font-size: 18px; /* Increase font size for clarity */
+}
+
+#clear:hover, #backspace:hover {
+    background-color: #ff6600; /* Darker orange on hover */
+}
+
+/* Calculator input field */
+input[type="text"] {
+    width: 100%;
+    height: 40px; /* Increased height for better usability */
+    padding: 10px;
+    font-size: 24px; /* Larger font size for visibility */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Adds space between the input field and buttons */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    div {
+        max-width: 90%;
+    }
+
+    input[type="button"] {
+        width: 70px; /* Slightly larger for mobile */
+        height: 50px; /* Adjusted for better touch usability */
+    }
+
+    /* Make clear and backspace buttons larger on smaller devices */
+    #clear, #backspace {
+        width: calc(50% - 10px); /* Ensure they are half the width */
+        height: 60px; /* Keep larger height for mobile */
+        font-size: 20px; /* Larger font size for better readability */
+        margin: 5px; /* Adjust margin for better spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    div {
+        max-width: 80%;
+    }
+
+    input[type="button"] {
+        width: 100px; /* Increase button width for touch devices */
+        height: 60px; /* Keep larger height for better touch usability */
+    }
+
+    #clear, #backspace {
+        width: calc(50% - 10px); /* Ensure both buttons are responsive */
+        height: 70px; /* Slightly larger height */
+    }
+}

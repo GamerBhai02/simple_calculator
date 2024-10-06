@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div>
+        <h2>Simple Calculator</h2>
+        <form name="form1" onsubmit="return false;">
+            <input type="text" name="answer" aria-label="calculator-display" id="display"><br><br>
+
+            <!-- AC and Backspace buttons above the number buttons -->
+            <input type="button" value="AC" id="clear" style="width: calc(100% - 10px); height: 50px; margin-bottom: 5px;">
+            <input type="button" value="⌫" id="backspace" style="width: calc(100% - 10px); height: 50px; margin-bottom: 5px;">
+            
+            <!-- Number buttons and operators -->
+            <input type="button" value="1" id="1">
+            <input type="button" value="2" id="2">
+            <input type="button" value="3" id="3">
+            <input type="button" value="*" id="multiply">
+            <br><br>
+            <input type="button" value="4" id="4">
+            <input type="button" value="5" id="5">
+            <input type="button" value="6" id="6">
+            <input type="button" value="/" id="divide">
+            <br><br>
+            <input type="button" value="7" id="7">
+            <input type="button" value="8" id="8">
+            <input type="button" value="9" id="9">
+            <input type="button" value="-" id="subtract">
+            <br><br>
+            <input type="button" value="+" id="add">
+            <input type="button" value="0" id="0">
+            <input type="button" value="." id="dot">
+            <input type="button" value="=" onclick="calculate()"><br><br>
+        </form>
+    </div>
+
+    <script>
+        // Function to evaluate the expression in the input field
+        function calculate() {
+            try {
+                form1.answer.value = eval(form1.answer.value);
+            } catch (e) {
+                form1.answer.value = "Error";
+            }
+        }
+
+        // Function to clear the entire input field
+        function clearScreen() {
+            form1.answer.value = '';
+        }
+
+        // Function to delete the last character
+        function backspace() {
+            let currentValue = form1.answer.value;
+            if (currentValue.length > 0) {
+                form1.answer.value = currentValue.slice(0, -1);
+            }
+        }
+
+        // Attach event listeners
+        document.getElementById('clear').addEventListener('click', clearScreen);
+        document.getElementById('backspace').addEventListener('click', backspace);
+        
+        // Adding listeners for number buttons
+        for (let i = 1; i <= 9; i++) {
+            document.getElementById(i.toString()).addEventListener('click', function() {
+                form1.answer.value += i;
+            });
+        }
+        document.getElementById('0').addEventListener('click', function() {
+            form1.answer.value += '0';
+        });
+        document.getElementById('add').addEventListener('click', function() {
+            form1.answer.value += '+';
+        });
+        document.getElementById('subtract').addEventListener('click', function() {
+            form1.answer.value += '-';
+        });
+        document.getElementById('multiply').addEventListener('click', function() {
+            form1.answer.value += '*';
+        });
+        document.getElementById('divide').addEventListener('click', function() {
+            form1.answer.value += '/';
+        });
+    </script>
+</body>
+</html>
